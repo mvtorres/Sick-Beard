@@ -417,8 +417,7 @@ def symlink(src, dst):
 
 def moveAndSymlinkFile(srcFile, destFile):
     try:
-        ek.ek(os.rename, srcFile, destFile)
-        fixSetGroupID(destFile)
+        moveFile(srcFile, destFile)
         ek.ek(symlink, destFile, srcFile)
     except Exception as e:
         logger.log(u"Failed to create symlink of " + srcFile + " at " + destFile + ": " + ex(e) + ". Copying instead", logger.ERROR)
